@@ -1,0 +1,24 @@
+import random
+import numpy as np
+
+# Create a 3x3 random matrix of integers. I have no reason for the 3x3 matrix except it sounded good
+matrix_rows = 3
+matrix_cols = 3
+min_value = 0
+max_value = 100
+
+# So the numbers are always random, I used the import 
+random_matrix = [[random.randint(min_value, max_value) for _ in range(matrix_cols)] for _ in range(matrix_rows)]
+print("Random matrix Number 1:")
+for row in random_matrix:
+    print(row)
+
+random_matrix_1= [[random.randint(min_value, max_value) for _ in range(matrix_cols)] for _ in range(matrix_rows)]
+print("Random matrix Number 2:")
+for row in random_matrix_1:
+    print(row)
+    
+result_matrix = np.dot(random_matrix, random_matrix_1)
+    
+print("\nResult Matrix: When matrix one and two are multiplied")
+print(result_matrix)
