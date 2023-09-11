@@ -1,0 +1,18 @@
+import numpy as np
+
+def laplacian_matrix(adjacency_matrix):
+    degree_matrix = np.diag(np.sum(adjacency_matrix, axis=1))
+    
+    
+    laplacian = degree_matrix - adjacency_matrix
+    return laplacian
+
+
+adjacency_matrix = np.array([[0, 1, 1, 0],
+                             [1, 0, 1, 0],
+                             [1, 1, 0, 1],
+                             [0, 0, 1, 0]])
+
+laplacian = laplacian_matrix(adjacency_matrix)
+print("Laplacian Matrix:")
+print(laplacian)
