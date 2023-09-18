@@ -1,0 +1,19 @@
+# Showing relationship with homescool class and gpa class
+students = ['Student1', 'Student2', 'Student3']
+classes = ['ClassA', 'ClassB']
+gpa = [3.5, 3.2, 3.8]
+homeschool = [False, True, True]
+
+incidence_matrix = []
+
+for i, student in enumerate(students):
+    row = []
+    for j, class_name in enumerate(classes):
+        if class_name == 'ClassA':
+            row.append(gpa[i])
+        elif class_name == 'ClassB':
+            row.append('homeschooled' if homeschool[i] else 'public schooled') 
+    incidence_matrix.append(row)
+
+for row in incidence_matrix:
+    print(row)
