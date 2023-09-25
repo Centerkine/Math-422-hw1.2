@@ -1,0 +1,21 @@
+import random
+import matplotlib.pyplot as plot
+
+# Define the population and their beliefs (1 for homeschooling is better, 0 for not better)
+population = [1] * 10000 + [0] * 10000
+
+# taking a proportion of 500
+sample_500 = random.sample(population, 500)
+
+count_500 = sample_500.count(1)
+count_not_better_500 = 500 - count_500
+
+# Plot the results
+labels = ['Homeschooling is Better', 'Not Better']
+sizes_500 = [count_500, count_not_better_500]
+
+plot.bar(labels, sizes_500, color=['blue', 'red'])
+plot.xlabel('Belief')
+plot.ylabel('Number of People')
+plot.title('Beliefs about Homeschooling')
+plot.show()
