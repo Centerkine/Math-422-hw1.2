@@ -1,0 +1,27 @@
+from sympy import symbols, diff, solve
+
+# Define the variable and the function
+x = symbols('x')
+f = x**2 - 4*x + 4  
+
+# Calculate the first and second derivatives
+f_prime = diff(f, x)
+f_double_prime = diff(f_prime, x)
+
+# Find the critical points where f'(x) = 0
+critical_points = solve(f_prime, x)
+
+# Check the second derivative at each critical point
+for point in critical_points:
+    second_derivative_at_point = f_double_prime.subs(x, point)
+    
+    if second_derivative_at_point > 0:
+        print(f"Local minimum at x = {point}")
+    elif second_derivative_at_point == 0:
+        print(f"Inconclusive at x = {point}")
+    else:
+        print(f"Not a local minimum at x = {point}")
+
+# Print the first and second derivatives
+print(f"First derivative: {f_prime}")
+print(f"Second derivative: {f_double_prime}")
