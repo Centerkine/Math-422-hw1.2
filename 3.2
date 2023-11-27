@@ -1,0 +1,17 @@
+from sympy import symbols, Function, series
+
+# Define the variable and the function
+x = symbols('x')
+f = Function('f')(x)
+
+# Define the point around which to expand the Taylor series
+a = 0
+
+# Define the order of the Taylor series
+order = 3
+
+# Compute the Taylor series
+taylor_series = series(f, x, a, n=order).removeO()
+
+# Print the result
+print(f"The {order}-th order Taylor series of {f} around x = {a} is: {taylor_series}")
