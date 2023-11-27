@@ -1,0 +1,23 @@
+import networkx as nx
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Generate a random graph
+np.random.seed(42)
+G = nx.erdos_renyi_graph(n=20, p=0.3)
+
+# Perform graph bipartitioning
+partition = nx.linalg.algebraicconnectivity.fiedler_vector(G, weight='weight', normalized=True)
+set_A = [node for node, value in enumerate(partition) if value < 0]
+set_B = [node for node, value in enumerate(partition) if value >= 0]
+
+# Plot the graph 
+pos = nx.spring_layout(G)
+nx.draw_networkx_nodes(G, pos, nodelist=set_A, node_color='blue', label='Set A')
+nx.draw_networkx_nodes(G, pos, nodelist=set_B, node_color='red', label='Set B')
+nx.draw_networkx_edges(G, pos)
+nx.draw_networkx_labels(G, pos)
+
+plt.title('Spectral Graph Bipartitioning')
+plt.legend()
+plt.show()
