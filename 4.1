@@ -1,0 +1,17 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Generate random homeschool grades
+np.random.seed(42)
+
+subjects = ['Math', 'Science', 'English', 'History', 'Art']
+grades = np.random.randint(60, 100, size=(5,))  
+
+# Plot the grades using a bar chart
+plt.figure(figsize=(8, 5))
+plt.bar(subjects, grades, color='skyblue')
+plt.title('Homeschool Grades')
+plt.xlabel('Subjects')
+plt.ylabel('Grades')
+plt.ylim(0, 100) 
+plt.show()
