@@ -1,0 +1,31 @@
+import numpy as np
+import pandas as pd
+from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+
+np.random.seed(0)
+data = {
+    'Student_ID': np.arange(1, 101),
+    'Math_Grade': np.random.randint(50, 100, size=100),
+    'English_Grade': np.random.randint(50, 100, size=100),
+}
+
+df = pd.DataFrame(data)
+
+# cluster math and english grade
+features = df[['Math_Grade', 'English_Grade']]
+
+k = 3
+
+#  k-means clustering
+kmeans = KMeans(n_clusters=k, random_state=42)
+df['Cluster'] = kmeans.fit_predict(features)
+
+# Visualize the clusters
+plt.scatter(df['Math_Grade'], df['English_Grade'], c=df['Cluster'], cmap='viridis')
+plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1], s=300, c='red', marker='X', label='Centroids')
+plt.xlabel('Math Grade')
+plt.ylabel('English Grade')
+plt.title(f'K-Means Clustering (k={k})')
+plt.legend()
+plt.show()
